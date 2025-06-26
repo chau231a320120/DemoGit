@@ -7,12 +7,27 @@
     <style>
         .animated-text {
             display: inline-block;
-            animation: moveText 2s infinite alternate ease-in-out;
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #0078d7, #00ffea, #ff00c8, #0078d7);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            filter: drop-shadow(0 2px 8px #00ffea);
+            animation: moveText 2s infinite alternate cubic-bezier(0.4,0,0.2,1), gradientMove 3s linear infinite;
         }
         @keyframes moveText {
-            0% { transform: translateY(0); color: #333; }
-            50% { transform: translateY(-20px); color: #0078d7; }
-            100% { transform: translateY(0); color: #333; }
+            0% { transform: translateY(0) scale(1); filter: drop-shadow(0 2px 8px #00ffea); }
+            30% { transform: translateY(-20px) scale(1.1) rotate(-2deg); filter: drop-shadow(0 4px 16px #ff00c8); }
+            60% { transform: translateY(10px) scale(0.95) rotate(2deg); filter: drop-shadow(0 2px 8px #0078d7); }
+            100% { transform: translateY(0) scale(1); filter: drop-shadow(0 2px 8px #00ffea); }
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
         }
     </style>
 </head>
