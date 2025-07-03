@@ -29,9 +29,56 @@
             0% { background-position: 0% 50%; }
             100% { background-position: 200% 50%; }
         }
+        .cat-container {
+            position: absolute;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 80px;
+            pointer-events: none;
+        }
+        .cat {
+            animation: catMove 3s infinite alternate cubic-bezier(0.4,0,0.2,1);
+        }
+        .cat-tail {
+            transform-box: fill-box;
+            transform-origin: 90% 60%;
+            animation: tailWag 0.7s infinite alternate ease-in-out;
+        }
+        @keyframes catMove {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-18px) scale(1.05); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes tailWag {
+            0% { transform: rotate(10deg); }
+            100% { transform: rotate(-25deg); }
+        }
     </style>
 </head>
 <body>
     <h1 class="animated-text"> xin chào !!</h1>
+    <div class="cat-container">
+        <svg class="cat" width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Body -->
+            <ellipse cx="60" cy="55" rx="35" ry="20" fill="#F9D29D"/>
+            <!-- Head -->
+            <ellipse cx="60" cy="35" rx="18" ry="15" fill="#F9D29D"/>
+            <!-- Left Ear -->
+            <polygon points="45,25 52,10 55,28" fill="#F9D29D"/>
+            <!-- Right Ear -->
+            <polygon points="75,25 68,10 65,28" fill="#F9D29D"/>
+            <!-- Eyes -->
+            <ellipse cx="54" cy="36" rx="2" ry="3" fill="#333"/>
+            <ellipse cx="66" cy="36" rx="2" ry="3" fill="#333"/>
+            <!-- Nose -->
+            <ellipse cx="60" cy="41" rx="2" ry="1.2" fill="#E59683"/>
+            <!-- Mouth -->
+            <path d="M58 43 Q60 45 62 43" stroke="#E59683" stroke-width="1" fill="none"/>
+            <!-- Tail -->
+            <path class="cat-tail" d="M95 60 Q110 65 100 45" stroke="#F9D29D" stroke-width="5" fill="none"/>
+        </svg>
+    </div>
 </body>
 </html>
